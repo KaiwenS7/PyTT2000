@@ -1,5 +1,8 @@
 def unixTott2k(unix_sec: int, micro_sec: int) -> int:
-
+	# Handle negative times, since I guess that's a thing for really bad packets
+	if(unix_sec <= 0):
+		raise ValueError("Time handling logic error")
+	
 	# Desending order offset times.  Mapping between unix time and TT2000
 	# proceeds at constant rate of 1e9 to 1 after each leap second.  The
 	# Each line in the chart below represents the instant in time *after*
@@ -51,9 +54,6 @@ def unixTott2k(unix_sec: int, micro_sec: int) -> int:
 
 	tt2k = 0
 	if( i >= nOffsets ):
-		# Handle negative times, since I guess that's a thing for really bad packets
-		assert(unix_sec <= 0, "Time handling logic error")
-
 		# Leap seconds weren't a thing before 1970, use whole unix time
 		tt2k = unix_sec*1000000000 + offsets[nOffsets-1][1]
 	

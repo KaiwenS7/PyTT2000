@@ -33,6 +33,12 @@ path = "src/PyTT2000/__about__.py"
 [tool.hatch.build.targets.wheel]
 packages = ["src/PyTT2000"]
 
+
+[tool.hatch.envs.lint]
+extra-dependencies = [
+  "pytest>=8.3.3",
+]
+
 [tool.hatch.envs.hatch-test]
 default-args = ["tests"]
 
@@ -40,4 +46,23 @@ default-args = ["tests"]
 exclude = [
   "/.github",
   "/docs",
+]
+
+[tool.coverage.run]
+source_pkgs = ["PyTT2000", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/PyTT2000/__about__.py",
+]
+
+[tool.coverage.paths]
+PyTT2000 = ["src/PyTT2000", "*/PyTT2000/src/PyTT2000"]
+tests = ["tests", "*/PyTT2000/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
 ]
