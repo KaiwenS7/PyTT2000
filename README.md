@@ -1,2 +1,7 @@
 # PyTT2000
 Python library for converting different values to TT2000 time. Currently only converts unix time one way
+
+## Reference
+NASA reference for [CDF_TIME_TT2000](https://cdf.gsfc.nasa.gov/html/leapseconds.html)
+
+> CDF has added a new CDF data type, CDF_TIME_TT2000, defined as an 8-byte signed integer with a fixed Time_Base=J2000 (Julian date 2451545.0 TT or 2000 January 1, 12h TT), Resolution=nanoseconds, Time_Scale=Terrestrial Time (TT), Units=nanoseconds, Reference_Position=rotating Earth Geoid. Given a current list of leap seconds, conversion between TT and UTC is straightforward (TT = TAI + 32.184s; TT = UTC + deltaAT + 32.184s, where deltaAT is the sum of the leap seconds since 1960; for example, for 2009, deltaAT = 34s). Accurate conversions from other time scales may require that data providers use the JPL NAIF SPICE or similar library, but data users will easily be able to convert to UTC time. Use of an 8-byte integer provides time with nanosecond resolution for the next 280 years, so data providers will no longer need 16-byte CDF_EPOCH16 variables to carry their highest time resolution (and in half the storage space). Pad values of -9223372036854775808 (0x8000000000000000) which corresponds to 1707-09-22T12:13:15.145224192; recommended FILLVAL is same.

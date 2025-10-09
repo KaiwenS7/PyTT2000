@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "PyTT2000"
+version = "1.0.0"
+requires-python = ">=3.8"
+authors = [
+  {name = "Kevin Steele", email = "klsteele7@pm.me"},
+  {name = "Chris Piker"},
+]
+maintainers = [
+  {name = "Kevin Steele", email = "klsteele7@pm.me"}
+]
+description = "Python library for converting different values to TT2000 time. Currently only converts unix time one way"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICEN[CS]E.*"]
+keywords = ["CDF", "TT2000", "TT2K"]
+
+[project.urls]
+Homepage = "https://github.com/KaiwenS7/PyTT2000"
+Documentation = "https://readthedocs.org"
+Repository = "https://github.com/KaiwenS7/PyTT2000.git"
+"Bug Tracker" = "https://github.com/KaiwenS7/PyTT2000/issues"
+Changelog = "https://github.com/KaiwenS7/PyTT2000/main/CHANGELOG.md"
+
+
+[tool.hatch.version]
+path = "src/PyTT2000/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/PyTT2000"]
+
+[tool.hatch.envs.hatch-test]
+default-args = ["tests"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/docs",
+]
